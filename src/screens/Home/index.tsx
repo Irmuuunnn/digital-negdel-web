@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { TrendingUp, MapPin, Gift, Play, User, Package, Calendar, Store } from "lucide-react";
+import { TrendingUp, MapPin, Gift, Play, User, Package, Calendar, Store, Trophy, Star, Medal } from "lucide-react";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { LogOut } from "lucide-react";
@@ -49,6 +49,99 @@ const HomeScreen = () => {
     },
   ];
 
+  const leaderboard = [
+    {
+      id: 1,
+      name: "С.Ирмүүн",
+      type: "Хөтөч",
+      trips: 142,
+      rating: 4.9,
+      earnings: 2850000,
+      avatar: "🏆"
+    },
+    {
+      id: 2,
+      name: "Ц.Цэцэгмаа",
+      type: "Жолооч",
+      trips: 128,
+      rating: 4.8,
+      earnings: 2650000,
+      avatar: "🥈"
+    },
+    {
+      id: 3,
+      name: "Д.Дорж",
+      type: "Хөтөч",
+      trips: 115,
+      rating: 4.8,
+      earnings: 2400000,
+      avatar: "🥉"
+    },
+    {
+      id: 4,
+      name: "М.Мөнхбат",
+      type: "Жолооч",
+      trips: 98,
+      rating: 4.7,
+      earnings: 2100000,
+      avatar: "👨‍💼"
+    },
+    {
+      id: 5,
+      name: "Г.Гантулга",
+      type: "Хөтөч",
+      trips: 89,
+      rating: 4.7,
+      earnings: 1950000,
+      avatar: "👨‍💼"
+    },
+    {
+      id: 6,
+      name: "С.Сарантуяа",
+      type: "Жолооч",
+      trips: 87,
+      rating: 4.6,
+      earnings: 1850000,
+      avatar: "👩‍💼"
+    },
+    {
+      id: 7,
+      name: "Б.Батбаяр",
+      type: "Хөтөч",
+      trips: 76,
+      rating: 4.6,
+      earnings: 1720000,
+      avatar: "👨‍💼"
+    },
+    {
+      id: 8,
+      name: "О.Оюунаа",
+      type: "Жолооч",
+      trips: 72,
+      rating: 4.5,
+      earnings: 1680000,
+      avatar: "👩‍💼"
+    },
+    {
+      id: 9,
+      name: "Т.Төмөрбаатар",
+      type: "Хөтөч",
+      trips: 68,
+      rating: 4.5,
+      earnings: 1590000,
+      avatar: "👨‍💼"
+    },
+    {
+      id: 10,
+      name: "Э.Энхтуяа",
+      type: "Жолооч",
+      trips: 65,
+      rating: 4.4,
+      earnings: 1520000,
+      avatar: "👩‍💼"
+    }
+  ];
+
   useEffect(() => {
     const fetchUserData = async (userId: string) => {
       try {
@@ -81,6 +174,19 @@ const HomeScreen = () => {
 
     loadUser();
   }, []);
+
+  const getRankIcon = (rank: number) => {
+    switch (rank) {
+      case 1:
+        return <Trophy className="w-6 h-6 text-yellow-500" />;
+      case 2:
+        return <Medal className="w-6 h-6 text-gray-400" />;
+      case 3:
+        return <Medal className="w-6 h-6 text-amber-600" />;
+      default:
+        return <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-sm font-bold text-gray-600">{rank}</div>;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 max-w-md mx-auto relative">
@@ -225,9 +331,76 @@ const HomeScreen = () => {
         </div>
       )}
 
+      {activeTab === "leaderboard" && (
+        <div className="px-4 my-6">
+          <Card className="shadow-lg rounded-2xl">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-center mb-6">
+                <Trophy className="w-8 h-8 text-yellow-500 mr-2" />
+                <h2 className="text-lg font-bold text-gray-800">Top хөтөч, жолооч</h2>
+              </div>
+              <p className="text-sm text-gray-500 mb-4 text-center">Жишээ</p>
+              
+              <div className="space-y-3">
+                {leaderboard.map((person, index) => (
+                  <div key={person.id} className={`border rounded-xl p-4 bg-white shadow-sm ${
+                    index < 3 ? 'border-2 border-yellow-200 bg-gradient-to-r from-yellow-50 to-white' : ''
+                  }`}>
+                    <div className="flex items-center space-x-4">
+                      <div className="flex items-center justify-center">
+                        {getRankIcon(index + 1)}
+                      </div>
+                      
+                      <div className="text-2xl">{person.avatar}</div>
+                      
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between">
+                          <h3 className="font-semibold text-gray-800">{person.name}</h3>
+                          <div className="flex items-center space-x-1">
+                            <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                            <span className="text-sm font-medium text-gray-600">{person.rating}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-center justify-between mt-1">
+                          <span className={`text-xs px-2 py-1 rounded-full ${
+                            person.type === "Хөтөч" 
+                              ? "bg-blue-100 text-blue-600" 
+                              : "bg-green-100 text-green-600"
+                          }`}>
+                            {person.type}
+                          </span>
+                          <span className="text-sm text-gray-500">{person.trips} аялал</span>
+                        </div>
+                        
+                        <div className="mt-2">
+                          <span className="text-sm font-semibold text-green-600">
+                            ₮{person.earnings.toLocaleString()}
+                          </span>
+                          <span className="text-xs text-gray-400 ml-1">орлого</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="mt-6 p-4 bg-blue-50 rounded-xl text-center">
+                <p className="text-sm text-blue-600 font-medium">
+                  🎯 Та одоогоор 15-р байранд байна
+                </p>
+                <p className="text-xs text-blue-500 mt-1">
+                  Top 10-д орохын тулд дор хаяж 3 аялал хийх хэрэгтэй
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
       {/* Bottom Navigation */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-3">
           <button
             onClick={() => setActiveTab("profile")}
             className={`flex flex-col items-center justify-center py-4 ${
@@ -250,6 +423,18 @@ const HomeScreen = () => {
           >
             <Package className="w-6 h-6 mb-1" />
             <span className="text-xs font-medium">Урамшуулал</span>
+          </button>
+          
+          <button
+            onClick={() => setActiveTab("leaderboard")}
+            className={`flex flex-col items-center justify-center py-4 ${
+              activeTab === "leaderboard"
+                ? "bg-blue-600 text-white"
+                : "text-gray-500"
+            }`}
+          >
+            <Trophy className="w-6 h-6 mb-1" />
+            <span className="text-xs font-medium">Top хөтөч, жолооч</span>
           </button>
         </div>
       </div>
