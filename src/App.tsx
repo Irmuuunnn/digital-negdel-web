@@ -12,6 +12,7 @@ import UserScreen from "./screens/Users";
 import SidebarMenu from "./components/SidebarMenu/SidebarMenu";
 import RegisterScreen from "./screens/Register";
 import SignupScreen from "./screens/Signup";
+import HomeScreen from "./screens/Home";
 // import { GlobalProvider, useGlobalContext } from "skywhale-api";
 
 interface PrivateRouteProps {
@@ -106,6 +107,10 @@ const App = () => {
           <Route
             path="/login"
             element={ <LoginScreen />}
+          />
+          <Route
+            path="/home"
+            element={ <HomeScreen />}
           />
            <Route
               path="/register"

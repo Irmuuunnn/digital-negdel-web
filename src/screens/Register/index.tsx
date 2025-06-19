@@ -2,6 +2,9 @@
 import { useState, useEffect } from "react";
 import { Button, Input, Select, Spin, message } from "antd";
 import { ArrowLeftOutlined, CheckCircleOutlined, UserOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
+
+
 
 const carMarkOptions = [
   { value: "TOY", label: "Тойота" },
@@ -282,6 +285,8 @@ const RegisterTypeScreen = () => {
     return option ? option.label : value;
   };
 
+  const navigate = useNavigate();
+
   // Show loading spinner while fetching data
   if (loading) {
     return (
@@ -465,14 +470,14 @@ const RegisterTypeScreen = () => {
                 />
               </div>
 
-              {/* <div>
+              <div>
                 <label className="block font-medium mb-2">Утас</label>
                 <Input
                   placeholder="Утас"
                   value={personalInfo.phone}
                   onChange={(e) => setPersonalInfo({ ...personalInfo, phone: e.target.value })}
                 />
-              </div> */}
+              </div>
 
               <div>
                 <label className="block font-medium mb-2">Регистрийн дугаар</label>
@@ -660,6 +665,8 @@ const RegisterTypeScreen = () => {
                 onClick={() => {
                   // Navigate to main app or dashboard
                   console.log("Navigate to main app");
+
+                  navigate("/home");
                   // window.location.href = '/dashboard';
                 }}
                 className="w-full font-semibold py-2 h-12 rounded-lg"

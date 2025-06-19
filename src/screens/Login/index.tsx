@@ -42,7 +42,8 @@ const LoginScreen = () => {
           localStorage.setItem("phone", data.body.phone)
           navigate("/register");
         } else {
-          navigate("/");
+          localStorage.setItem("user_id", data.body.id.toString());
+          navigate("/home");
         }
       } else {
         // Handle error cases
@@ -60,12 +61,12 @@ const LoginScreen = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-50 p-4">
       <Card className="w-full max-w-sm shadow-xl rounded-2xl bg-white p-6">
         <CardContent>
-          <h2 className="text-xl font-semibold text-blue-600 mb-4 text-center">
+          {/* <h2 className="text-xl font-semibold text-blue-600 mb-4 text-center">
             Нэвтрэх
-          </h2>
+          </h2> */}
           <div className="flex justify-center mb-4">
             <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-              <img src="../../../evseg-blue.webp" alt="evseg" className="w-8" />
+              <img src="../../../evseg-rewards.png" alt="evseg" className="w-full h-full" />
             </div>
           </div>
           <h3 className="text-lg font-bold text-center mb-2">Тавтай морилно уу</h3>
@@ -92,7 +93,7 @@ const LoginScreen = () => {
             </div>
 
             <div>
-              <Label className="text-gray-700 font-medium">Нууц үг (OTP)</Label>
+              <Label className="text-gray-700 font-medium">Нууц үг</Label>
               <Input
                 type="text"
                 placeholder="123456"
@@ -109,9 +110,9 @@ const LoginScreen = () => {
                 Нууц үгээ мартсан
               </button> */}
               <div className=""></div>
-              <button type="button" className="hover:underline">
+              {/* <button type="button" className="hover:underline">
                 Дахин илгээх
-              </button>
+              </button> */}
             </div>
 
             <Button
