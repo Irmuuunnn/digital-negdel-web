@@ -87,7 +87,7 @@ const StartTripScreen = () => {
         {/* Хөтөч эсвэл жолооч сонгох */}
         {personOptions.length > 0 && (
           <div className="text-left mb-4">
-            <label className="text-sm font-medium">Хамтрагч</label>
+            <label className="text-sm font-medium">Хамтрагч (Заавал биш)</label>
             <Select
               className="w-full mt-1"
               placeholder="Хамтрагчаа сонгоно уу"
@@ -101,7 +101,6 @@ const StartTripScreen = () => {
           type="primary"
           className="bg-gray-900 text-white w-full h-10 rounded-md mt-4"
           onClick={handleContinue}
-          disabled={!companionType}
         >
           Үргэлжлүүлэх
         </Button>
