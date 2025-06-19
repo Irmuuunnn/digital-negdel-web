@@ -470,14 +470,14 @@ const RegisterTypeScreen = () => {
                 />
               </div>
 
-              <div>
+              {/* <div>
                 <label className="block font-medium mb-2">Утас</label>
                 <Input
                   placeholder="Утас"
                   value={personalInfo.phone}
                   onChange={(e) => setPersonalInfo({ ...personalInfo, phone: e.target.value })}
                 />
-              </div>
+              </div> */}
 
               <div>
                 <label className="block font-medium mb-2">Регистрийн дугаар</label>
@@ -584,10 +584,10 @@ const RegisterTypeScreen = () => {
                   </span>
                 </div>
 
-                <div className="flex justify-between">
+                {/* <div className="flex justify-between">
                   <span className="text-gray-600">Утас:</span>
                   <span className="font-medium">{personalInfo.phone}</span>
-                </div>
+                </div> */}
 
                 <div className="flex justify-between">
                   <span className="text-gray-600">Нэр:</span>
