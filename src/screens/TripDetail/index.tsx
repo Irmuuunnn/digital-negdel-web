@@ -10,10 +10,12 @@ const TripDetailsScreen = () => {
   const [store, setStore] = useState<string | undefined>();
   const [tourists, setTourists] = useState<number>(1);
   const [tripStarted, setTripStarted] = useState(false);
-  const tripCode = "IMGHCN";
+  const [tripCode, setTripCode] = useState<number | null>(null);
 
   const handleStartTrip = () => {
     if (country && store && tourists) {
+      const randomCode = Math.floor(Math.random() * 50) + 1; // 1-50 хооронд random
+      setTripCode(randomCode);
       setTripStarted(true);
     } else {
       alert("Бүх талбарыг бөглөнө үү.");
@@ -105,10 +107,8 @@ const TripDetailsScreen = () => {
             <h2 className="text-2xl font-bold text-green-500 mb-2">
               Амжилттай аялал эхэллээ!
             </h2>
-            <p className="text-gray-600 text-sm mb-4">
-              Аяллын код:
-            </p>
-            <div className="text-3xl font-extrabold text-gray-900 mb-6">{tripCode}</div>
+            <p className="text-gray-600 text-sm mb-4">Аяллын код:</p>
+            <div className="text-4xl font-extrabold text-gray-900 mb-6">{tripCode}</div>
           </div>
 
           <div className="text-left mb-6 space-y-2">

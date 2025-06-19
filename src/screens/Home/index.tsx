@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { TrendingUp, MapPin, Gift, Play, User, Package, Calendar, Store } from "lucide-react";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
+import { LogOut } from "lucide-react";
+
 
 const HomeScreen = () => {
   const [activeTab, setActiveTab] = useState("profile");
@@ -19,22 +21,31 @@ const HomeScreen = () => {
 
   const rewards = [
     {
+      code: "IMASDX",
+      id : 44,
       amount: 5000,
       date: "2025/06/18",
       store: "Evseg Cashmere",
       status: "Төлөгдсөн",
+      desc: "Америк - 10 аялагч (7 эрэгтэй, 3 эмэгтэй)"
     },
     {
+      code: "BASDAS",
+      id: 3,
       amount: 3000,
       date: "2025/06/16",
       store: "Modern Nomads",
       status: "Хүлээгдэж буй",
+      desc: "Солонгос - 5 аялагч (4 эрэгтэй, 1 эмэгтэй)"
     },
     {
+      code: "LLASXZ",
+      id: 7,
       amount: 2000,
       date: "2025/06/14",
       store: "State Department Store",
       status: "Татгалзсан",
+      desc: "Япон - 15 аялагч (5 эрэгтэй, 10 эмэгтэй)"
     },
   ];
 
@@ -62,6 +73,7 @@ const HomeScreen = () => {
       }
       const data = await fetchUserData(userId);
       setUserData(data);
+      localStorage.setItem("type", userData.body.type);
     };
 
     loadUser();
@@ -78,9 +90,9 @@ const HomeScreen = () => {
             </div>
             <div>
               <h1 className="text-lg sm:text-xl font-semibold">
-                {userData ? userData.name : "Уншиж байна..."}
+                {userData ? userData.body.name : "Уншиж байна..."}
               </h1>
-              <p className="text-blue-100 text-sm">🚗 Жолооч</p>
+              <p className="text-blue-100 text-sm">🚗 {userData?.body.type}</p>
             </div>
           </div>
           <div className="flex space-x-2">
@@ -89,16 +101,18 @@ const HomeScreen = () => {
                 <span className="text-xs sm:text-sm">?</span>
               </div>
             </Button>
-            <Button variant="ghost" size="sm" className="text-white hover:bg-blue-500 p-2">
-              <div className="w-6 h-6 sm:w-7 sm:h-7">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M9 12l2 2 4-4" />
-                  <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3" />
-                  <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3" />
-                  <path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3" />
-                  <path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3" />
-                </svg>
-              </div>
+            <Button
+                variant="ghost"
+                size="sm"
+                className="text-white hover:bg-blue-500 p-2"
+                onClick={() => {
+                    localStorage.clear(); 
+                    navigate("/login");           
+                }}
+                >
+                <div className="w-12 h-12 sm:w-7 sm:h-7 flex items-center justify-center">
+                    <LogOut className="w-12 h-12" />
+                </div>
             </Button>
           </div>
         </div>
@@ -179,7 +193,7 @@ const HomeScreen = () => {
                       <span className="text-green-600 font-semibold text-lg">₮{reward.amount.toLocaleString()}</span>
                       <span className={`text-xs font-medium px-2 py-1 rounded-full ${
                         reward.status === "Төлөгдсөн"
-                          ? "bg-black text-white"
+                          ? "bg-green-500 text-white"
                           : reward.status === "Хүлээгдэж буй"
                           ? "bg-gray-200 text-gray-700"
                           : "bg-red-500 text-white"
@@ -195,6 +209,11 @@ const HomeScreen = () => {
                       <Store className="w-4 h-4" />
                       <span>{reward.store}</span>
                     </div>
+                    <div className="flex items-center text-sm text-gray-500 space-x-2">
+                      <TrendingUp className="w-4 h-4" />
+                      <span>{reward.code}</span>
+                    </div>
+                    <span className="text-xs text-gray-400"> {reward.desc}</span>
                   </div>
                 ))}
               </div>
