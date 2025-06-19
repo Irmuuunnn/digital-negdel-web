@@ -5,10 +5,13 @@ import {
   Navigate,
   Outlet,
 } from "react-router-dom";
-import { useEffect, useState, ReactNode } from "react";
+// useState
+import { useEffect, ReactNode } from "react";
 import LoginScreen from "./screens/Login";
 import UserScreen from "./screens/Users";
 import SidebarMenu from "./components/SidebarMenu/SidebarMenu";
+import RegisterScreen from "./screens/Register";
+import SignupScreen from "./screens/Signup";
 // import { GlobalProvider, useGlobalContext } from "skywhale-api";
 
 interface PrivateRouteProps {
@@ -69,32 +72,32 @@ const ProtectedLayout = () => {
 };
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    const token = localStorage.getItem("token");
-    const expiresAt = localStorage.getItem("expires_at");
-    return !!(token && expiresAt && new Date(expiresAt).getTime() > Date.now());
-  });
+  // const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+  //   const token = localStorage.getItem("token");
+  //   const expiresAt = localStorage.getItem("expires_at");
+  //   return !!(token && expiresAt && new Date(expiresAt).getTime() > Date.now());
+  // });
 
   useEffect(() => {
-    const checkAuth = () => {
-      const token = localStorage.getItem("token");
-      const expiresAt = localStorage.getItem("expires_at");
+    // const checkAuth = () => {
+    //   const token = localStorage.getItem("token");
+    //   const expiresAt = localStorage.getItem("expires_at");
 
-      if (token && expiresAt && new Date(expiresAt).getTime() > Date.now()) {
-        setIsAuthenticated(true);
-      } else {
-        logout();
-      }
-    };
+    //   if (token && expiresAt && new Date(expiresAt).getTime() > Date.now()) {
+    //     setIsAuthenticated(true);
+    //   } else {
+    //     logout();
+    //   }
+    // };
 
-    checkAuth();
+    // checkAuth();
   }, []);
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("expires_at");
-    setIsAuthenticated(false);
-  };
+  // const logout = () => {
+  //   localStorage.removeItem("token");
+  //   localStorage.removeItem("expires_at");
+  //   setIsAuthenticated(false);
+  // };
 
   return (
  
@@ -102,8 +105,20 @@ const App = () => {
         <Routes>
           <Route
             path="/login"
-            element={isAuthenticated ? <Navigate to="/" /> : <LoginScreen />}
+            element={ <LoginScreen />}
           />
+           <Route
+              path="/register"
+              element={
+                  <RegisterScreen />
+              }
+            />
+              <Route
+              path="/signup"
+              element={
+                  <SignupScreen />
+              }
+            />
           <Route element={<ProtectedLayout />}>
             <Route
               path="/"
@@ -113,7 +128,6 @@ const App = () => {
                 </PrivateRoute>
               }
             />
-          
             <Route
               path="/users"
               element={
