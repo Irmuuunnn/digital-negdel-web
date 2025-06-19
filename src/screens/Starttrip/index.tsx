@@ -13,14 +13,14 @@ const StartTripScreen = () => {
   useEffect(() => {
     const type = localStorage.getItem("type");
 
-    if (type === "хөтөч") {
+    if (type === "жолооч") {
       setPersonOptions([
         { label: "Хөтөч | Ж.Бат-Эрдэнэ 99234673", value: "Ж.Бат-Эрдэнэ" },
         { label: "Хөтөч | Д.Болдоо 995233456", value: "Д.Болдоо" },
         { label: "Хөтөч | Д.Дамирна 88655345", value: "Д.Дамирна" },
         { label: "Хөтөч | Б.Батсүх 91913445", value: "Б.Батсүх" },
       ]);
-    } else if (type === "жолооч") {
+    } else if (type === "хөтөч") {
       setPersonOptions([
         { label: "Жолооч | Б.Энхтүвшин - 99112233", value: "Б.Энхтүвшин" },
         { label: "Жолооч | С.Цогбаяр - 88553344", value: "С.Цогбаяр" },
