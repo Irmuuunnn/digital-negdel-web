@@ -631,12 +631,12 @@ const RegisterTypeScreen = () => {
               </Button>
             </div>
 
-            <div className="bg-gray-100 p-4 rounded-lg mt-4">
+            {/* <div className="bg-gray-100 p-4 rounded-lg mt-4">
               <h3 className="font-semibold text-sm mb-2">API илгээх өгөгдөл:</h3>
               <pre className="text-xs overflow-x-auto">
                 {JSON.stringify(buildFinalData(), null, 2)}
               </pre>
-            </div>
+            </div> */}
           </div>
         )}
         {/* Step 6: Success Screen */}
