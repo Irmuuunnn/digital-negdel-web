@@ -80,22 +80,22 @@ const SignupScreen = () => {
           {step === "phone" && (
             <>
               <p className="text-center text-gray-500 text-sm mb-6">
-                Та утасны дугаараа оруулна уу
+                Та гар утасны дугаараа ашиглан бүртгүүлнэ үү.
               </p>
               <div className="space-y-4">
                 <div>
-                  <Label className="text-gray-700 font-medium">Утасны дугаар</Label>
+                  <Label className="text-gray-700 font-medium">Таны дугаар</Label>
                   <Input
                     type="tel"
-                    placeholder="99123456"
+                    placeholder="99999999"
                     maxLength={8}
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="border-gray-300 focus:ring-2 focus:ring-blue-400"
+                    className="border-gray-300 focus:ring-2 focus:ring-blue-400 placeholder-opacity-50"
                     required
                   />
                 </div>
-                <span className="text-xs text-center text-gray-400 font-thin">Энэ нууц үг нь таны нэвтрэх нууц үг болохыг анхаарна уу</span>
+                <span className="text-xs text-center text-gray-400 font-thin">Системд нэвтрэх нууц үг таны гар утсанд мессежээр ирэх болно.</span>
                 <Button
                   onClick={handleRegister}
                   disabled={loading}

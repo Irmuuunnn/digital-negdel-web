@@ -70,9 +70,6 @@ const LoginScreen = () => {
             </div>
           </div>
           <h3 className="text-lg font-bold text-center mb-2">Тавтай морилно уу</h3>
-          <p className="text-center text-gray-500 text-sm mb-6">
-            Утасны дугаараа оруулан нэвтэрнэ үү
-          </p>
 
           {error && (
             <p className="text-red-500 text-center text-sm mb-4">{error}</p>
@@ -83,11 +80,11 @@ const LoginScreen = () => {
               <Label className="text-gray-700 font-medium">Утасны дугаар</Label>
               <Input
                 type="tel"
-                placeholder="99123456"
+                placeholder="99999999"
                 maxLength={8}
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="border-gray-300 focus:ring-2 focus:ring-blue-400"
+                className="border-gray-300 focus:ring-2 focus:ring-blue-400 placeholder-opacity-50"
                 required
               />
             </div>
@@ -100,7 +97,7 @@ const LoginScreen = () => {
                 maxLength={6}
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
-                className="border-gray-300 focus:ring-2 focus:ring-blue-400"
+                className="border-gray-300 focus:ring-2 focus:ring-blue-400 placeholder-opacity-50"
                 required
               />
             </div>
