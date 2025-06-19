@@ -632,7 +632,7 @@ const RegisterTypeScreen = () => {
                   borderColor: "#1f2937",
                 }}
               >
-                Баталгаажуулах
+                Идэвхжүүлэх
               </Button>
             </div>
 
