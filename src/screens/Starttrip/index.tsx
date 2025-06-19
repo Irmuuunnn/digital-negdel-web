@@ -101,7 +101,7 @@ const StartTripScreen = () => {
           type="primary"
           className="bg-gray-900 text-white w-full h-10 rounded-md mt-4"
           onClick={handleContinue}
-          disabled={!companionType || !person}
+          disabled={!companionType}
         >
           Үргэлжлүүлэх
         </Button>

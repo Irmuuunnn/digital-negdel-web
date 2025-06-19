@@ -14,7 +14,7 @@ const TripDetailsScreen = () => {
 
   const handleStartTrip = () => {
     if (country && store && tourists) {
-      const randomCode = Math.floor(Math.random() * 50) + 1; // 1-50 хооронд random
+      const randomCode = Math.floor(Math.random() * 50) + 1; 
       setTripCode(randomCode);
       setTripStarted(true);
     } else {
