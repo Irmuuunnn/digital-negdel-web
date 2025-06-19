@@ -37,7 +37,6 @@ const StartTripScreen = () => {
   }, []);
 
   const handleContinue = () => {
-    if (!companionType || !person) return;
     navigate("/trip-details", { state: { companionType, person } });
   };
 
@@ -67,6 +66,7 @@ const StartTripScreen = () => {
         <div className="text-left mb-4">
           <label className="text-sm font-medium">Тур компани сонгох (Заавал биш):</label>
           <Select
+          allowClear
             className="w-full mt-1"
             placeholder="Компани сонгох"
             onChange={(value) => setCompanionType(value)}
@@ -89,6 +89,7 @@ const StartTripScreen = () => {
           <div className="text-left mb-4">
             <label className="text-sm font-medium">Хамтрагч (Заавал биш)</label>
             <Select
+            allowClear
               className="w-full mt-1"
               placeholder="Хамтрагч сонгох"
               onChange={(value) => setPerson(value)}
