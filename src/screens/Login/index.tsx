@@ -84,7 +84,7 @@ const LoginScreen = () => {
                 maxLength={8}
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="border-gray-300 focus:ring-2 focus:ring-blue-400 placeholder-opacity-50"
+                className="border-gray-300 focus:ring-2 focus:ring-blue-400 placeholder-opacity-30"
                 required
               />
             </div>
@@ -97,7 +97,7 @@ const LoginScreen = () => {
                 maxLength={6}
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
-                className="border-gray-300 focus:ring-2 focus:ring-blue-400 placeholder-opacity-50"
+                className="border-gray-300 focus:ring-2 focus:ring-blue-400 placeholder-opacity-30"
                 required
               />
             </div>
