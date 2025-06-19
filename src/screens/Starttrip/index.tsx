@@ -34,10 +34,10 @@ const StartTripScreen = () => {
           </div>
         </div>
         <h2 className="text-xl font-bold mb-2">Аялал эхлүүлэх</h2>
-        <p className="text-gray-600 mb-6">Та хэнтэй хамт аялал хийх вэ?</p>
+        <p className="text-gray-600 mb-6">Та тус аяллын хамтрагчдын мэдээллийг бүртгэнэ үү.</p>
 
         <div className="text-left mb-4">
-          <label className="text-sm font-medium">Хамтрагчийн төрөл</label>
+          <label className="text-sm font-medium">Тур компани сонгох (Заавал биш):</label>
           <Select
             className="w-full mt-1"
             placeholder="Хамтрагч сонгоно уу"
