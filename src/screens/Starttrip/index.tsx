@@ -62,13 +62,13 @@ const StartTripScreen = () => {
           </div>
         </div>
         <h2 className="text-xl font-bold mb-2">Аялал эхлүүлэх</h2>
-        <p className="text-gray-600 mb-6">Та тус аяллын хамтрагчдын мэдээллийг бүртгэнэ үү.</p>
+        <p className="text-gray-600 mb-6">Аяллын хамтрагчдын мэдээллийг оруулна уу.</p>
 
         <div className="text-left mb-4">
           <label className="text-sm font-medium">Тур компани сонгох (Заавал биш):</label>
           <Select
             className="w-full mt-1"
-            placeholder="Хамтрагч сонгоно уу"
+            placeholder="Компани сонгох"
             onChange={(value) => setCompanionType(value)}
             options={[
               { label: "Монкристалл Тур ХХК", value: "Монкристалл Тур ХХК" },
@@ -87,10 +87,10 @@ const StartTripScreen = () => {
         {/* Хөтөч эсвэл жолооч сонгох */}
         {personOptions.length > 0 && (
           <div className="text-left mb-4">
-            <label className="text-sm font-medium">Хамтрагч</label>
+            <label className="text-sm font-medium">Хамтрагч (Заавал биш):</label>
             <Select
               className="w-full mt-1"
-              placeholder="Хамтрагчаа сонгоно уу"
+              placeholder="Хамтрагч сонгох"
               onChange={(value) => setPerson(value)}
               options={personOptions}
             />
