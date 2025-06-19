@@ -105,9 +105,10 @@ const LoginScreen = () => {
             </div>
 
             <div className="flex justify-between text-sm text-blue-500 mt-1">
-              <button type="button" className="hover:underline">
+              {/* <button type="button" className="hover:underline">
                 Нууц үгээ мартсан
-              </button>
+              </button> */}
+              <div className=""></div>
               <button type="button" className="hover:underline">
                 Дахин илгээх
               </button>
