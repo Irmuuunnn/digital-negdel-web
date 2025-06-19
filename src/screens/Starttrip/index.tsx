@@ -1,16 +1,44 @@
-// StartTripScreen.tsx
 import { ArrowLeft, PlayCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button, Select } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const StartTripScreen = () => {
   const navigate = useNavigate();
   const [companionType, setCompanionType] = useState<string | null>(null);
+  const [person, setPerson] = useState<string | null>(null);
+  const [personOptions, setPersonOptions] = useState<{ label: string; value: string }[]>([]);
+
+  // localStorage дээр байгаа type-г шалгаж, options-оо бэлдэнэ
+  useEffect(() => {
+    const type = localStorage.getItem("type");
+
+    if (type === "жолооч") {
+      setPersonOptions([
+        { label: "Хөтөч | Ж.Бат-Эрдэнэ 99234673", value: "Ж.Бат-Эрдэнэ" },
+        { label: "Хөтөч | Д.Болдоо 995233456", value: "Д.Болдоо" },
+        { label: "Хөтөч | Д.Дамирна 88655345", value: "Д.Дамирна" },
+        { label: "Хөтөч | Б.Батсүх 91913445", value: "Б.Батсүх" },
+      ]);
+    } else if (type === "хөтөч") {
+      setPersonOptions([
+        { label: "Жолооч | Б.Энхтүвшин - 99112233", value: "Б.Энхтүвшин" },
+        { label: "Жолооч | С.Цогбаяр - 88553344", value: "С.Цогбаяр" },
+        { label: "Жолооч | Д.Ганхуяг - 99334455", value: "Д.Ганхуяг" },
+        { label: "Жолооч | М.Эрдэнэбаяр - 99887766", value: "М.Эрдэнэбаяр" },
+        { label: "Жолооч | Н.Төгсжаргал - 94445566", value: "Н.Төгсжаргал" },
+        { label: "Жолооч | Ч.Батчимэг - 99664411", value: "Ч.Батчимэг" },
+        { label: "Жолооч | Л.Отгонбаяр - 95776688", value: "Л.Отгонбаяр" },
+        { label: "Жолооч | Г.Сувдаа - 88224455", value: "Г.Сувдаа" },
+        { label: "Жолооч | Х.Цэнд-Аюуш - 99778899", value: "Х.Цэнд-Аюуш" },
+        { label: "Жолооч | Ж.Хишигт - 88990011", value: "Ж.Хишигт" },
+      ]);
+    }
+  }, []);
 
   const handleContinue = () => {
-    if (!companionType) return;
-    navigate("/trip-details", { state: { companionType } });
+    if (!companionType || !person) return;
+    navigate("/trip-details", { state: { companionType, person } });
   };
 
   return (
@@ -55,6 +83,19 @@ const StartTripScreen = () => {
             ]}
           />
         </div>
+
+        {/* Хөтөч эсвэл жолооч сонгох */}
+        {personOptions.length > 0 && (
+          <div className="text-left mb-4">
+            <label className="text-sm font-medium">Хамтрагч</label>
+            <Select
+              className="w-full mt-1"
+              placeholder="Хамтрагчаа сонгоно уу"
+              onChange={(value) => setPerson(value)}
+              options={personOptions}
+            />
+          </div>
+        )}
 
         <Button
           type="primary"
