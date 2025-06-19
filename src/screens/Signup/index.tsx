@@ -91,7 +91,7 @@ const SignupScreen = () => {
                     maxLength={8}
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="border-gray-300 focus:ring-2 focus:ring-blue-400 placeholder-opacity-50"
+                    className="border-gray-300 focus:ring-2 focus:ring-blue-400 placeholder-opacity-30"
                     required
                   />
                 </div>
@@ -110,11 +110,11 @@ const SignupScreen = () => {
           {step === "otp" && (
             <>
               <p className="text-center text-gray-500 text-sm mb-6">
-                {phone} дугаарт ирсэн OTP-г оруулна уу
+                Таны {phone} дугаарт ирсэн 6 оронтой кодыг оруулж баталгаажуулах шаардлагатай.
               </p>
               <div className="space-y-4">
                 <div>
-                  <Label className="text-gray-700 font-medium">OTP</Label>
+                  <Label className="text-gray-700 font-medium">6 оронтой код (Энэ таны системд нэвтрэх нууц үг болно)</Label>
                   <Input
                     type="text"
                     placeholder="123456"
