@@ -74,7 +74,7 @@ const HomeScreen = () => {
       const data = await fetchUserData(userId);
       if (data) {
         setUserData(data);
-        localStorage.setItem("type", data.type); 
+        localStorage.setItem("type", data.body.type); 
       }
     };
     
