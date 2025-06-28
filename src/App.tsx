@@ -15,6 +15,7 @@ import SignupScreen from "./screens/Signup";
 import HomeScreen from "./screens/Home";
 import StartTripScreen from "./screens/Starttrip";
 import TripDetailsScreen from "./screens/TripDetail";
+import SupportPage from "./screens/Support";
 // import { GlobalProvider, useGlobalContext } from "skywhale-api";
 
 interface PrivateRouteProps {
@@ -110,6 +111,10 @@ const App = () => {
             path="/login"
             element={ <LoginScreen />}
           />
+          <Route  
+            path="/support"
+            element={<SupportPage />}
+            />
           <Route
             path="/home"
             element={ <HomeScreen />}
