@@ -28,14 +28,14 @@ const SupportPage: React.FC = () => {
         <div className="mb-6 space-y-2">
           <Paragraph className="flex items-center">
             <MailOutlined className="mr-2 text-blue-500" />
-            <a href="mailto:support@evseg.store">
-              support@evseg.store
+            <a href="mailto:irmuun@skywhale.mn">
+                irmuun@skywhale.mn
             </a>
           </Paragraph>
           <Paragraph className="flex items-center">
             <PhoneOutlined className="mr-2 text-blue-500" />
-            <a href="tel:+97699110000">
-              +976 9911 0000
+            <a href="tel:+97699291314">
+              +976 9929 1314
             </a>
           </Paragraph>
         </div>
